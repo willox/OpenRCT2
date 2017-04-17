@@ -44,6 +44,9 @@
 		C606CCD21DB4D7C800FE4015 /* SideTunnelCall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C606CCD01DB4D7C800FE4015 /* SideTunnelCall.cpp */; };
 		C606CCD51DB4DD6C00FE4015 /* VerticalTunnelCall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C606CCD31DB4DD6C00FE4015 /* VerticalTunnelCall.cpp */; };
 		C606CD261DB5120C00FE4015 /* TestPaint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C606CD231DB5120900FE4015 /* TestPaint.cpp */; };
+		C610AA191EA56CEF00EFA5BA /* PlaceParkEntranceAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C610AA151EA56CEF00EFA5BA /* PlaceParkEntranceAction.cpp */; };
+		C610AA1A1EA56CEF00EFA5BA /* GameAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C610AA161EA56CEF00EFA5BA /* GameAction.cpp */; };
+		C610AA1B1EA56CEF00EFA5BA /* SetParkEntranceFeeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C610AA181EA56CEF00EFA5BA /* SetParkEntranceFeeAction.cpp */; };
 		C612A8991D64825300B634CA /* vehicle_data.c in Sources */ = {isa = PBXBuildFile; fileRef = C612A8971D64825300B634CA /* vehicle_data.c */; };
 		C6136C551E21893500F3ED2B /* view_clipping.c in Sources */ = {isa = PBXBuildFile; fileRef = C6136C541E21893500F3ED2B /* view_clipping.c */; };
 		C61FB7241CF86356004CE991 /* NetworkUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C61FB7221CF86356004CE991 /* NetworkUser.cpp */; };
@@ -575,6 +578,10 @@
 		C606CCD61DB4E1CD00FE4015 /* PaintIntercept.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; lineEnding = 0; path = PaintIntercept.hpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		C606CD231DB5120900FE4015 /* TestPaint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPaint.cpp; sourceTree = "<group>"; };
 		C606CD241DB5120900FE4015 /* TestPaint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestPaint.hpp; sourceTree = "<group>"; };
+		C610AA151EA56CEF00EFA5BA /* PlaceParkEntranceAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlaceParkEntranceAction.cpp; sourceTree = "<group>"; };
+		C610AA161EA56CEF00EFA5BA /* GameAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameAction.cpp; sourceTree = "<group>"; };
+		C610AA171EA56CEF00EFA5BA /* GameAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameAction.h; sourceTree = "<group>"; };
+		C610AA181EA56CEF00EFA5BA /* SetParkEntranceFeeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetParkEntranceFeeAction.cpp; sourceTree = "<group>"; };
 		C612A8971D64825300B634CA /* vehicle_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vehicle_data.c; sourceTree = "<group>"; };
 		C612A8981D64825300B634CA /* vehicle_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle_data.h; sourceTree = "<group>"; };
 		C6136C541E21893500F3ED2B /* view_clipping.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = view_clipping.c; sourceTree = "<group>"; };
@@ -1298,6 +1305,17 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		C610AA141EA56CD900EFA5BA /* actions */ = {
+			isa = PBXGroup;
+			children = (
+				C610AA161EA56CEF00EFA5BA /* GameAction.cpp */,
+				C610AA171EA56CEF00EFA5BA /* GameAction.h */,
+				C610AA151EA56CEF00EFA5BA /* PlaceParkEntranceAction.cpp */,
+				C610AA181EA56CEF00EFA5BA /* SetParkEntranceFeeAction.cpp */,
+			);
+			path = actions;
+			sourceTree = "<group>";
+		};
 		C64FDA5E1D6D99F400F259B9 /* Paint */ = {
 			isa = PBXGroup;
 			children = (
@@ -1553,6 +1571,7 @@
 		D41B72431C21015A0080A7B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C610AA141EA56CD900EFA5BA /* actions */,
 				D44270CF1CC81B3200D84D28 /* audio */,
 				D44270D61CC81B3200D84D28 /* cmdline */,
 				D42E33741E5C27D600D630AF /* config */,
@@ -2839,6 +2858,7 @@
 				D442723A1CC81B3200D84D28 /* staff.c in Sources */,
 				D44272931CC81B3200D84D28 /* top_toolbar.c in Sources */,
 				D43407DA1D0E14BE00C2B3D4 /* FillRectShader.cpp in Sources */,
+				C610AA1B1EA56CEF00EFA5BA /* SetParkEntranceFeeAction.cpp in Sources */,
 				D464FEBE1D31A66E00CBABAC /* MemoryStream.cpp in Sources */,
 				D442728A1CC81B3200D84D28 /* tile_inspector.c in Sources */,
 				D43407D91D0E14BE00C2B3D4 /* DrawLineShader.cpp in Sources */,
@@ -2949,6 +2969,7 @@
 				D44272031CC81B3200D84D28 /* Path.cpp in Sources */,
 				C686F9301CDBC3B7009F9BFC /* flying_saucers.c in Sources */,
 				D44272401CC81B3200D84D28 /* windows.c in Sources */,
+				C610AA191EA56CEF00EFA5BA /* PlaceParkEntranceAction.cpp in Sources */,
 				D44272881CC81B3200D84D28 /* text_input.c in Sources */,
 				D442720F1CC81B3200D84D28 /* scrolling_text.c in Sources */,
 				D44272041CC81B3200D84D28 /* Stopwatch.cpp in Sources */,
@@ -2992,6 +3013,7 @@
 				D464FEE61D31A6AA00CBABAC /* EntranceObject.cpp in Sources */,
 				D43407DE1D0E14BE00C2B3D4 /* OpenGLShaderProgram.cpp in Sources */,
 				D4B21B6F1E343AF1004982C7 /* lightfx.c in Sources */,
+				C610AA1A1EA56CEF00EFA5BA /* GameAction.cpp in Sources */,
 				D43407DC1D0E14BE00C2B3D4 /* OpenGLDrawingEngine.cpp in Sources */,
 				D44272761CC81B3200D84D28 /* options.c in Sources */,
 				C686F93D1CDBC3B7009F9BFC /* shop.c in Sources */,
