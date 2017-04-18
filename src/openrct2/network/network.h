@@ -198,6 +198,31 @@ private:
 			parameters = new MemoryStream(stream);
 		}
 
+		GameCommand(const GameCommand &source) {
+			tick = source.tick;
+			playerid = source.playerid;
+			actionType = source.actionType;
+			callback = source.callback;
+			if (actionType != 0xFFFFFFFF)
+			{
+				parameters = new MemoryStream(*source.parameters);
+			}
+			else
+			{
+				eax = source.eax;
+				ebx = source.ebx;
+				ecx = source.ecx;
+				edx = source.edx;
+				esi = source.esi;
+				edi = source.edi;
+				ebp = source.ebp;
+			}
+		}
+
+		~GameCommand()
+		{
+			delete parameters;
+		}
 		uint32 tick;
 		uint32 eax, ebx, ecx, edx, esi, edi, ebp;
 		uint32 actionType = 0xFFFFFFFF;
