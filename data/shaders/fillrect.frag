@@ -1,22 +1,16 @@
 #version 150
 
 uniform ivec2       uScreenSize;
+uniform vec4        uPalette[256];
 uniform ivec4       uClip;
-uniform int         uFlags;
-uniform vec4        uColour[2];
-uniform sampler2D   uSourceFramebuffer;
 uniform ivec4       uBounds;
+uniform int         uColour;
+uniform int         uFlags;
+uniform sampler2D   uSourceFramebuffer;
 
 in vec2 fPosition;
 
 out vec4 oColour;
-
-float getluma(vec3 colour)
-{
-    return (colour.r * 0.2126) +
-           (colour.g * 0.7152) +
-           (colour.b * 0.0722);
-}
 
 void main()
 {
@@ -26,36 +20,34 @@ void main()
         discard;
     }
 
-    vec4 targetColour;
-    int posSum = int(fPosition.x) + int(fPosition.y);
-    if ((posSum % 2) == 0)
-    {
-        targetColour = uColour[0];
-    }
-    else
-    {
-        targetColour = uColour[1];
-    }
-
+    // Cross-stitching
     if ((uFlags & 1) != 0)
     {
-        vec2 textureCoordinates = (fPosition / vec2(uScreenSize)) * vec2(1, -1);
-        vec4 sourceColour = texture(uSourceFramebuffer, textureCoordinates);
-
-        float luma = getluma(sourceColour.rgb);
-        sourceColour = vec4(vec3(luma), 1);
-
-        if (luma < 0.5)
+        
+        int posSum = int(fPosition.x) + int(fPosition.y);
+        if ((posSum % 2) != 0)
         {
-            oColour = 2.0 * sourceColour * targetColour;
-        }
-        else
-        {
-            oColour = 1.0 - 2.0 * (1.0 - sourceColour) * (1.0 - targetColour);
+            discard;
         }
     }
-    else
+
+    // NYI pattern
+    if ((uFlags & 2) != 0)
     {
-        oColour = targetColour;
+
     }
+
+    // Colour lookup table
+    if ((uFlags & 4) != 0)
+    {
+        //vec2 textureCoordinates = (fPosition / vec2(uScreenSize)) * vec2(1, -1);
+        //int dstColour = int(texture(uSourceFramebuffer, textureCoordinates).b * 255.0);
+
+        //oColour = uPalette[uColourLookup[dstColour]];
+        // NYI
+        oColour = vec4( 1.0, 0.0, 0.5, 1.0 );
+        return;
+    }
+
+    oColour = uPalette[uColour];
 }

@@ -50,11 +50,11 @@ FillRectShader::~FillRectShader()
 void FillRectShader::GetLocations()
 {
     uScreenSize         = GetUniformLocation("uScreenSize");
+    uPalette            = GetUniformLocation("uPalette");
     uClip               = GetUniformLocation("uClip");
     uBounds             = GetUniformLocation("uBounds");
+    uColour             = GetUniformLocation("uColour");
     uFlags              = GetUniformLocation("uFlags");
-    uColour[0]          = GetUniformLocation("uColour[0]");
-    uColour[1]          = GetUniformLocation("uColour[1]");
     uSourceFramebuffer  = GetUniformLocation("uSourceFramebuffer");
 
     vIndex              = GetAttributeLocation("vIndex");
@@ -80,15 +80,19 @@ void FillRectShader::SetFlags(uint32 flags)
     glUniform1i(uFlags, flags);
 }
 
-void FillRectShader::SetColour(sint32 index, vec4f colour)
+void FillRectShader::SetColour(uint8 colour)
 {
-    glUniform4f(uColour[index], colour.r, colour.g, colour.b, colour.a);
+    glUniform1i(uColour, colour);
 }
 
 void FillRectShader::SetSourceFramebuffer(GLuint texture)
 {
-    _sourceFramebuffer = texture;
     OpenGLAPI::SetTexture(0, GL_TEXTURE_2D, texture);
+}
+
+void FillRectShader::SetPalette(const vec4f *glPalette)
+{
+    glUniform4fv(uPalette, 256, (const GLfloat *) glPalette);
 }
 
 void FillRectShader::Draw(sint32 left, sint32 top, sint32 right, sint32 bottom)
@@ -97,10 +101,6 @@ void FillRectShader::Draw(sint32 left, sint32 top, sint32 right, sint32 bottom)
 
     glBindVertexArray(_vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
-}
-
-GLuint FillRectShader::GetSourceFramebuffer() const {
-    return _sourceFramebuffer;
 }
 
 #endif /* DISABLE_OPENGL */

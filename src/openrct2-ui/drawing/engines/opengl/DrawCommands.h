@@ -23,8 +23,7 @@
 
 struct DrawRectCommand {
     uint32 flags;
-    GLuint sourceFramebuffer;
-    vec4f colours[2];
+    uint8 colour;
     sint32 clip[4];
     sint32 bounds[4];
 };

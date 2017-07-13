@@ -25,18 +25,21 @@ class FillRectShader final : public OpenGLShaderProgram
 {
 private:
     GLuint uScreenSize;
+    GLuint uPalette;
     GLuint uClip;
     GLuint uBounds;
+    GLuint uColour;
+    // TODO: no magic numbers
+    // 0x1 = cross hatch
+    // 0x2 = NYI pattern
+    // 0x4 = use colour lookup table
     GLuint uFlags;
-    GLuint uColour[2];
     GLuint uSourceFramebuffer;
 
     GLuint vIndex;
 
     GLuint _vbo;
     GLuint _vao;
-
-    GLuint _sourceFramebuffer = 0;
 
 public:
     FillRectShader();
@@ -46,9 +49,10 @@ public:
     void SetClip(sint32 left, sint32 top, sint32 right, sint32 bottom);
     void SetBounds(sint32 left, sint32 top, sint32 right, sint32 bottom);
     void SetFlags(uint32 flags);
-    void SetColour(sint32 index, vec4f colour);
+    void SetColour(uint8 colour);
     void SetSourceFramebuffer(GLuint texture);
-
+    void SetPalette(const vec4f *glPalette);
+    
     void Draw(sint32 left, sint32 top, sint32 right, sint32 bottom);
 
     GLuint GetSourceFramebuffer() const;
